@@ -1,4 +1,4 @@
-package com.example.prueba
+package com.example.prueba.data
 
 object CarDataSource {
     private val cars = ArrayList<Car>()

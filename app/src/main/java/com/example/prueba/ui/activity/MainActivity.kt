@@ -1,10 +1,14 @@
-package com.example.prueba
+package com.example.prueba.ui.activity
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import com.example.prueba.data.Car
+import com.example.prueba.ui.adapters.CarAdapter
+import com.example.prueba.data.CarDataSource
 import com.example.prueba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +37,29 @@ class MainActivity : AppCompatActivity() {
                     "${vehicle.license}",
                     Toast.LENGTH_LONG
                 ).show()
+
+                val intent =Intent(this, DetailVehicle::class.java)
+                intent.putExtra(DetailVehicle.EXTRA_DATA, "Hola mundo")
+                intent.putExtra(DetailVehicle.EXTRA_POSITION, position)
+                startActivity(intent)
             }
+        binding.button2.setOnClickListener{
+            val intent= Intent(this, CreateCarActivity::class.java)
+            startActivityForResult(intent,1234)
+        }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1234) {
+            if (resultCode == Activity.RESULT_OK) {
+
+            }
+
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+            }
+        }
+    }
+
 }
