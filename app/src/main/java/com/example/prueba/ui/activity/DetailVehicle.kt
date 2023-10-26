@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.prueba.R
+import com.example.prueba.data.Car
 import com.example.prueba.data.CarDataSource
 import com.example.prueba.databinding.ActivityDetailVehicleBinding
 
 class DetailVehicle : AppCompatActivity() {
     private lateinit var binding:ActivityDetailVehicleBinding
+    private lateinit var car:Car
     companion object{
         val EXTRA_DATA:String="data"
         val EXTRA_POSITION:String="position"
@@ -20,6 +22,13 @@ class DetailVehicle : AppCompatActivity() {
         setContentView(binding.root)
 
         setData()
+        setListener()
+    }
+    private fun setListener(){
+        binding.btnDeleted.setOnClickListener {
+            CarDataSource.deleteCar(car)
+            finish()
+        }
     }
     private fun setData (){
         val message = intent.getStringExtra(EXTRA_DATA)
@@ -34,7 +43,7 @@ class DetailVehicle : AppCompatActivity() {
 
         val position:Int = intent.getIntExtra(EXTRA_POSITION,0)
         val cars = CarDataSource.getCars()
-        val car = cars.get(position)
+        car = cars.get(position)
         binding.txtlicense.text = car.license
 
     }

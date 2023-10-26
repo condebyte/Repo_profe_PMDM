@@ -40,4 +40,9 @@ class CarAdapter() : BaseAdapter() {
          binding.txtModel.text = item.model
          return binding.root
     }
+
+    fun setData(cars: java.util.ArrayList<Car>) {
+        this.list=cars
+
+    }
 }

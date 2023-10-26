@@ -14,7 +14,7 @@ import com.example.prueba.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var adapter:CarAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -23,9 +23,15 @@ class MainActivity : AppCompatActivity() {
         setListener()
     }
 
+    override fun onStart(){
+        super.onStart()
+        setData()
+    }
+
     private fun setData() {
-        var adapter = CarAdapter(this, CarDataSource.getCars())
+        adapter = CarAdapter(this, CarDataSource.getCars())
         binding.carList.adapter = adapter
+
     }
 
     private fun setListener() {
@@ -53,6 +59,8 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == 1234) {
             if (resultCode == Activity.RESULT_OK) {
+                adapter.setData(CarDataSource.getCars())
+                adapter.notifyDataSetChanged()
 
             }
 
