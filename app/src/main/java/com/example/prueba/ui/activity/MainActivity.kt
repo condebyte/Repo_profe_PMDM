@@ -61,11 +61,8 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 adapter.setData(CarDataSource.getCars())
                 adapter.notifyDataSetChanged()
-
             }
-
             if (resultCode == Activity.RESULT_CANCELED) {
-
             }
         }
     }
