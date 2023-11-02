@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Prueba</string>
+    <string-array name="items_names">
+        <item>casa 1</item>
+        <item>casa 2</item>
+        <item>casa 3</item>
+        <item>casa 4</item>
+        <item>casa 5</item>
+        <item>casa 6</item>
+        <item>casa 7</item>
+
+
+
+    </string-array>
 </resources>
